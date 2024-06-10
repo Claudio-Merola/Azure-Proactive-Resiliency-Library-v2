@@ -3,6 +3,14 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+#APRL Specific Files
+/tools/Azure-Proactive-Resiliency-Library-v2/
+/tools/wara*.json
+/tools/wara*.xlsx
+rg.txt
+sub.txt
+scope.txt
+
 # User-specific files
 *.rsuser
 *.suo
