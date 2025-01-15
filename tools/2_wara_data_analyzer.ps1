@@ -189,16 +189,16 @@ $Script:Runtime = Measure-Command -Expression {
     $Script:ServicesYAML = Get-ChildItem -Path ($Script:clonePath + '\azure-resources') -Filter 'recommendations.yaml' -Recurse
     $Script:WAFYAML = Get-ChildItem -Path ($Script:clonePath + '\azure-waf') -Filter 'recommendations.yaml' -Recurse
 
-    if ($Script:CollectorDetails.SAP -eq 'True') {
+    if ($Script:CollectorDetails.SAP -eq 'True' -or $Script:CollectorDetails.SAP.IsPresent -eq 'True') {
       $Script:ServicesYAML += Get-ChildItem -Path ($Script:clonePath + '\azure-specialized-workloads\sap') -Filter 'recommendations.yaml' -Recurse
     }
-    if ($Script:CollectorDetails.AVD -eq 'True') {
+    if ($Script:CollectorDetails.AVD -eq 'True' -or $Script:CollectorDetails.AVD.IsPresent -eq 'True') {
       $Script:ServicesYAML += Get-ChildItem -Path ($Script:clonePath + '\azure-specialized-workloads\avd') -Filter 'recommendations.yaml' -Recurse
     }
-    if ($Script:CollectorDetails.AVS -eq 'True') {
+    if ($Script:CollectorDetails.AVS -eq 'True' -or $Script:CollectorDetails.AVS.IsPresent -eq 'True') {
       $Script:ServicesYAML += Get-ChildItem -Path ($Script:clonePath + '\azure-specialized-workloads\avs') -Filter 'recommendations.yaml' -Recurse
     }
-    if ($Script:CollectorDetails.HPC -eq 'HPC') {
+    if ($Script:CollectorDetails.HPC -eq 'True' -or $Script:CollectorDetails.HPC.IsPresent -eq 'True') {
       $Script:ServicesYAML += Get-ChildItem -Path ($Script:clonePath + '\azure-specialized-workloads\hpc') -Filter 'recommendations.yaml' -Recurse
     }
 
@@ -1068,7 +1068,7 @@ $Script:Runtime = Measure-Command -Expression {
   }
 
   #Call the functions
-  $Script:Version = '2.1.19'
+  $Script:Version = '2.1.20'
   Write-Host 'Version: ' -NoNewline
   Write-Host $Script:Version -ForegroundColor DarkBlue
 
